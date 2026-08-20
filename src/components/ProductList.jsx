@@ -1,173 +1,173 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../features/cart/cartSlice";
+import { addToCart } from "../redux/cartSlice";
 import { Link } from "react-router-dom";
 import "./ProductList.css";
 
-const categories = [
+const plantData = [
+  // Foliage Category
   {
-    name: "Air‑Purifying",
+    category: "Foliage",
     plants: [
       {
-        id: "ap1",
-        name: "Spider Plant",
-        price: 12.99,
-        img: "https://via.placeholder.com/150?text=Spider+Plant",
+        id: "foliage-1",
+        name: "Monstera Deliciosa",
+        price: 45,
+        img: "/images/monstera.jpg",
       },
       {
-        id: "ap2",
-        name: "Peace Lily",
-        price: 15.5,
-        img: "https://via.placeholder.com/150?text=Peace+Lily",
+        id: "foliage-2",
+        name: "Philodendron Pink Princess",
+        price: 38,
+        img: "/images/pink-princess.jpg",
       },
       {
-        id: "ap3",
-        name: "Snake Plant",
-        price: 14.0,
-        img: "https://via.placeholder.com/150?text=Snake+Plant",
-      },
-      {
-        id: "ap4",
-        name: "Boston Fern",
-        price: 11.75,
-        img: "https://via.placeholder.com/150?text=Boston+Fern",
-      },
-      {
-        id: "ap5",
-        name: "Rubber Plant",
-        price: 18.2,
-        img: "https://via.placeholder.com/150?text=Rubber+Plant",
-      },
-      {
-        id: "ap6",
-        name: "Philodendron",
-        price: 13.4,
-        img: "https://via.placeholder.com/150?text=Philodendron",
-      },
-    ],
-  },
-  {
-    name: "Low‑Light",
-    plants: [
-      {
-        id: "ll1",
+        id: "foliage-3",
         name: "ZZ Plant",
-        price: 16.99,
-        img: "https://via.placeholder.com/150?text=ZZ+Plant",
+        price: 30,
+        img: "/images/zz-plant.jpg",
       },
       {
-        id: "ll2",
-        name: "Pothos",
-        price: 9.99,
-        img: "https://via.placeholder.com/150?text=Pothos",
+        id: "foliage-4",
+        name: "Snake Plant",
+        price: 25,
+        img: "/images/snake-plant.jpg",
       },
       {
-        id: "ll3",
-        name: "Cast Iron Plant",
-        price: 13.5,
-        img: "https://via.placeholder.com/150?text=Cast+Iron+Plant",
+        id: "foliage-5",
+        name: "Calathea Orbifolia",
+        price: 42,
+        img: "/images/calathea.jpg",
       },
       {
-        id: "ll4",
-        name: "Chinese Evergreen",
-        price: 12.0,
-        img: "https://via.placeholder.com/150?text=Chinese+Evergreen",
-      },
-      {
-        id: "ll5",
-        name: "Dracaena",
-        price: 14.75,
-        img: "https://via.placeholder.com/150?text=Dracaena",
-      },
-      {
-        id: "ll6",
-        name: "Peace Lily (Low Light)",
-        price: 15.0,
-        img: "https://via.placeholder.com/150?text=Peace+Lily+LL",
+        id: "foliage-6",
+        name: "Fiddle Leaf Fig",
+        price: 55,
+        img: "/images/fiddle-fig.jpg",
       },
     ],
   },
+  // Succulents Category
   {
-    name: "Succulents",
+    category: "Succulents",
     plants: [
       {
-        id: "su1",
-        name: "Aloe Vera",
-        price: 8.99,
-        img: "https://via.placeholder.com/150?text=Aloe+Vera",
-      },
-      {
-        id: "su2",
+        id: "succulent-1",
         name: "Echeveria",
-        price: 7.5,
-        img: "https://via.placeholder.com/150?text=Echeveria",
+        price: 12,
+        img: "/images/echeveria.jpg",
       },
       {
-        id: "su3",
-        name: "Jade Plant",
-        price: 9.25,
-        img: "https://via.placeholder.com/150?text=Jade+Plant",
+        id: "succulent-2",
+        name: "Aloe Vera",
+        price: 15,
+        img: "/images/aloe-vera.jpg",
       },
       {
-        id: "su4",
+        id: "succulent-3",
         name: "Haworthia",
-        price: 6.8,
-        img: "https://via.placeholder.com/150?text=Haworthia",
+        price: 14,
+        img: "/images/haworthia.jpg",
       },
       {
-        id: "su5",
-        name: "Sedum",
-        price: 5.99,
-        img: "https://via.placeholder.com/150?text=Sedum",
+        id: "succulent-4",
+        name: "Jade Plant",
+        price: 18,
+        img: "/images/jade-plant.jpg",
       },
       {
-        id: "su6",
+        id: "succulent-5",
+        name: "String of Pearls",
+        price: 20,
+        img: "/images/string-of-pearls.jpg",
+      },
+      {
+        id: "succulent-6",
         name: "Gasteria",
-        price: 7.2,
-        img: "https://via.placeholder.com/150?text=Gasteria",
+        price: 13,
+        img: "/images/gasteria.jpg",
+      },
+    ],
+  },
+  // Air‑Purifying Category
+  {
+    category: "Air‑Purifying",
+    plants: [
+      {
+        id: "air-1",
+        name: "Spider Plant",
+        price: 22,
+        img: "/images/spider-plant.jpg",
+      },
+      {
+        id: "air-2",
+        name: "Boston Fern",
+        price: 28,
+        img: "/images/boston-fern.jpg",
+      },
+      {
+        id: "air-3",
+        name: "Peace Lily",
+        price: 35,
+        img: "/images/peace-lily.jpg",
+      },
+      {
+        id: "air-4",
+        name: "Rubber Plant",
+        price: 40,
+        img: "/images/rubber-plant.jpg",
+      },
+      {
+        id: "air-5",
+        name: "Areca Palm",
+        price: 45,
+        img: "/images/areca-palm.jpg",
+      },
+      {
+        id: "air-6",
+        name: "English Ivy",
+        price: 24,
+        img: "/images/english-ivy.jpg",
       },
     ],
   },
 ];
 
-function ProductList() {
+const ProductList = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const isInCart = (productId) =>
+    cartItems.some((item) => item.id === productId);
 
   const handleAddToCart = (plant) => {
     dispatch(addToCart(plant));
   };
 
-  const isInCart = (plantId) => {
-    return cartItems.some((item) => item.id === plantId);
-  };
+  const totalCartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
     <div className="product-list-page">
-      {/* Navbar */}
-      <nav className="navbar">
-        <Link to="/" className="nav-link">
-          Home
-        </Link>
-        <Link to="/" className="nav-link">
-          Plants
-        </Link>
-        <Link to="/cart" className="nav-link cart-link">
-          Cart ({totalQuantity})
+      <nav className="product-navbar">
+        <Link to="/">Home</Link>
+        <Link to="/plants">Plants</Link>
+        <Link to="/cart">
+          Cart <span className="cart-count">({totalCartCount})</span>
         </Link>
       </nav>
 
-      {/* Plant Categories */}
-      {categories.map((category) => (
-        <section key={category.name} className="category-section">
-          <h2>{category.name}</h2>
+      {plantData.map((category) => (
+        <section key={category.category} className="category-section">
+          <h2>{category.category}</h2>
           <div className="plants-grid">
             {category.plants.map((plant) => (
               <div key={plant.id} className="plant-card">
                 <img src={plant.img} alt={plant.name} className="plant-thumb" />
-                <h3 className="plant-name">{plant.name}</h3>
-                <p className="plant-price">${plant.price.toFixed(2)}</p>
+                <h3>{plant.name}</h3>
+                <p className="price">${plant.price}</p>
                 <button
                   className="add-to-cart-btn"
                   onClick={() => handleAddToCart(plant)}
@@ -182,6 +182,6 @@ function ProductList() {
       ))}
     </div>
   );
-}
+};
 
 export default ProductList;
